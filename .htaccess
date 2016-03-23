@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteRule ^genJSON/([^/]*)$ class/config/class.json.php?table=$1 [L]
+RewriteRule ^genJSON/([^/]*)/([^/]*)$ class/config/class.json.php?table=$1&condition=$2 [L]
+RewriteRule ^login-check$ login.php [L]
