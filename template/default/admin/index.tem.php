@@ -17,6 +17,9 @@
     }else if(isset($_POST['data']) && isset($_POST['sending']) && $_POST['sending'] == "remove-member") {
         echo removeMember($_POST['data']);
         exit();
+    }else if(isset($_POST['data']) && isset($_POST['sending']) && $_POST['sending'] == "setting") {
+        echo updateSetting($_POST['data']);
+        exit();
     }
 
 	ob_start();

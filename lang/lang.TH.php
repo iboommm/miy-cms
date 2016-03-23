@@ -50,6 +50,7 @@
 	$lang["Admin-help-success3"] = "แก้ไขสมาชิก ";
 	$lang["Admin-help-success4"] = "เรียบร้อยแล้ว";
 	$lang["Admin-help-success5"] = "ลบสมาชิก ";
+	$lang["Admin-help-success6"] = "อัพเดตข้อมูลเรียบร้อย ";
 	/*--ADMIN-- */	
 	
 ?>

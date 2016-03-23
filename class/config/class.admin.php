@@ -64,4 +64,20 @@
 		return $db->removeExecute("member",$deID);
 	}
 
+	function updateSetting($data){
+		$setting = explode(",",$data);
+		$setting[0] = base64_decode($setting[0]);
+		$setting[1] = base64_decode($setting[1]);
+		$setting[2] = base64_decode($setting[2]);
+		$setting[3] = base64_decode($setting[3]);
+		$setting[4] = base64_decode($setting[4]);
+		$db = new DB();
+		$db->updateExecute("setting","`setting_value` = '$setting[0]'","id",1);	
+		$db->updateExecute("setting","`setting_value` = '$setting[1]'","id",3);	
+		$db->updateExecute("setting","`setting_value` = '$setting[2]'","id",2);	
+		$db->updateExecute("setting","`setting_value` = '$setting[3]'","id",4);	
+		return $db->updateExecute("setting","`setting_value` = '$setting[4]'","id",5);	
+
+	}
+
 ?>
