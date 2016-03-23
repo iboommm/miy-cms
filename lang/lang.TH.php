@@ -39,6 +39,15 @@
 	$lang["Admin-webboard-forum"] = "จัดการหมวดหมู่";
 	$lang["Admin-webboard-topic"] = "จัดการกระทู้";
 	$lang["Admin-success"] = "เสร็จสิ้น";
+	$lang["Admin-add-menu"] = "เพิ่มเมนู";
+	$lang["Admin-name-menu"] = "เมนู";
+	$lang["Admin-edit-menu"] = "แก้ไขเมนู";
+	$lang["Admin-remove-menu"] = "ลบเมนู";
+	$lang["Admin-menu-name"] = "ชื่อเมนู";
+	$lang["Admin-menu-link"] = "การเชื่อมโยง";
+	$lang["Admin-menu-description"] = "รายละเอียดเมนู";
+	$lang["Admin-menu-num"] = "ลำดับที่";
+	$lang["Admin-menu-sub"] = "เมนูรอง";
 
 	$lang["Admin-Help-TitleName"] = "กำหนดข้อความที่จะแสดงบน Title Bars หรือบนส่วนหัวของเว็บไซต์";
 	$lang["Admin-error-login"] = "ชื่อผู้ใช้ หรือ รหัสผ่าน ไม่ถูกต้อง";

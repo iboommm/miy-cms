@@ -80,4 +80,14 @@
 
 	}
 
+	function addMenu($data) {
+		$menu = explode(",",$data);
+		$decodeName = $menu[0];
+		$decodeLink = $menu[1];
+		$decodeDes = $menu[2];
+
+		$db = new DB();
+		return $db->insertExecute("menu","'','$decodeName','$decodeLink','99','','$decodeDes','0'");
+	}
+
 ?>

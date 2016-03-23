@@ -20,6 +20,9 @@
     }else if(isset($_POST['data']) && isset($_POST['sending']) && $_POST['sending'] == "setting") {
         echo updateSetting($_POST['data']);
         exit();
+    }else if(isset($_POST['data']) && isset($_POST['sending']) && $_POST['sending'] == "add-menu") {
+        echo addMenu($_POST['data']);
+        exit();
     }
 
 	ob_start();
@@ -157,6 +160,8 @@
                             include "template/".getTheme()."/admin/addMember.tem.php";
                     }elseif ($_GET['mode'] == "edit-member") {
                             include "template/".getTheme()."/admin/editMember.tem.php";
+                    }elseif ($_GET['mode'] == "edit-menu") {
+                            include "template/".getTheme()."/admin/editMenu.tem.php";
                     }elseif ($_GET['mode'] == "logout") {
                         session_destroy();
                         ?> 
