@@ -1,7 +1,12 @@
                 <?php if(!defined("ADMIN_TEMPLATE")) 
                         exit("Access Denied"); 
                 ?>
-
+                <?php  
+                    require_once "/class/config/class.template.php";
+                    require_once "/class/config/class.setting.php";
+                    require_once "/class/config/class.admin.php";
+                    require_once '/class/config/class.lang.php';
+                ?>
                 <script src='js/angular.min.js'></script>
                  <script>
                 var app = angular.module('myApp', []);
@@ -42,7 +47,6 @@
                                     <div class="col-xs-2 ">Number</div>
                                     <div class="col-xs-2 ">Name</div>
                                     <div class="col-xs-2 ">Link</div>
-                                    <div class="col-xs-1 hidden-xs">Icon</div>
                                     <div class="col-xs-2 hidden-xs">Description</div>
                                     <div class="col-xs-3 ">&nbsp;</div>
                                 </div>
@@ -50,21 +54,19 @@
                                 <div class="col-xs-2 ">{{ menu.num }}</div>
                                 <div class="col-xs-2 ">{{ menu.name }}</div>
                                 <div class="col-xs-2 ">{{ menu.link }}</div>
-                                <div class="col-xs-1 hidden-xs">{{ menu.icon }}&nbsp;</div>
                                 <div class="col-xs-2 hidden-xs">{{ menu.description }}</div>
-                                <div class="col-xs-3 "><a href="javascript:;;"><?php echo $lang["Admin-edit"]; ?></a> || <a href="javascript:;;"><?php echo $lang["Admin-remove"]; ?></a></div>
+                                <div class="col-xs-3 "><a href="admin.php?mode=edit-menu&id={{ menu.id }}"><i class="fa fa-pencil-square-o"></i> <?php echo $lang["Admin-edit"]; ?></a>  </div>
                                 <div style="right:-13px;position: relative;" class="col-xs-12 container list-group " ng-repeat="menu in myData | orderBy:'num' | filter:{sub:menu.id}" >                <div ng-if="menu.num == 1"> <br /></div>
-                                <div class="col-xs-2 "> -> {{ menu.num }}</div>
+                                <div class="col-xs-2 "> <li> {{ menu.num }}</div>
                                 <div class="col-xs-2 ">{{ menu.name }}</div>
                                 <div class="col-xs-2 ">{{ menu.link }}</div>
-                                <div class="col-xs-1 hidden-xs">{{ menu.icon }}&nbsp;</div>
                                 <div class="col-xs-2 hidden-xs">{{ menu.description }}</div>
-                                <div class="col-xs-3 "><a href="javascript:;;"><?php echo $lang["Admin-edit"]; ?></a> || <a href="javascript:;;"><?php echo $lang["Admin-remove"]; ?></a></div>
+                                <div class="col-xs-3 "><a href="admin.php?mode=edit-menu&id={{ menu.id }}"><i class="fa fa-pencil-square-o"></i> <?php echo $lang["Admin-edit"]; ?></a></div>
                            </div>
                            </div>
                             </div>
                             <div class="col-xs-12 container list-group">
-                            <button class="btn btn-primary"><?php echo $lang["Admin-Update"]; ?></button>
+                            <button data-toggle="modal" data-target="#add-menu" class="btn btn-primary"><?php echo $lang["Admin-add-menu"]; ?></button>
                              </div>   
                         </form>
 
@@ -89,4 +91,50 @@
                 
                 </div>
 
-               
+
+                <!-- Modal -->
+                <div class="modal fade" id="add-menu" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel"><?php echo $lang["Admin-add-menu"]; ?></h4>
+                      </div>
+                      <div class="modal-body">
+                            <div class="form-group">
+                                <label><?php echo $lang["Admin-menu-name"]; ?></label>
+                                <input  id="addMenuName" class="form-control" placeholder="<?php echo $lang["Admin-Enter"]." ".$lang["Admin-menu-name"]; ?>" required>
+                            </div>
+                            <div class="form-group">
+                                <label><?php echo $lang["Admin-menu-link"]; ?></label>
+                                <input id="addMenuLink" class="form-control" placeholder="<?php echo $lang["Admin-Enter"]." ".$lang["Admin-menu-link"]; ?>" required>
+                            </div>
+                            <div class="form-group">
+                                <label><?php echo $lang["Admin-menu-description"]; ?></label>
+                                <input id="addMenuDescription" class="form-control" placeholder="<?php echo $lang["Admin-Enter"]." ".$lang["Admin-menu-description"]; ?>" required>
+                            </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo $lang["Admin-cancel"]; ?></button>
+                        <button id="addMenuButton" type="button" class="btn btn-primary"><?php echo $lang["Admin-confirm"]; ?></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                
+
+                <script>
+                    $('#addMenuButton').click(function(event) {
+                        var eName = $('#addMenuName').val();
+                        var eLink = $('#addMenuLink').val();
+                        var eDesc = $('#addMenuDescription').val();
+                        var genData = eName + "," + eLink + "," + eDesc;
+                        alert(genData);
+                        $.post('admin.php?mode=menu', {data: genData,sending: 'add-menu'}, function(data, textStatus, xhr) {
+                            alert(data);
+                            location.reload();
+                        });
+                    });
+
+                </script>
