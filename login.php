@@ -8,4 +8,9 @@
 		$data =  $_POST['data'];
 		print login($data);
 	}
+	if(isset($_SESSION["ses_login_user"])) {
+		print $_SESSION["ses_login_user"];
+	}else {
+		print 0;
+	}
 ?>

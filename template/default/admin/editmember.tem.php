@@ -2,10 +2,10 @@
                         exit("Access Denied"); 
                 ?>
                 <?php
-                        require_once "/class/config/class.template.php";
-                        require_once "/class/config/class.setting.php";
-                        require_once "/class/config/class.admin.php";
-                        require_once '/class/config/class.lang.php';
+                        require_once "class/config/class.template.php";
+                        require_once "class/config/class.setting.php";
+                        require_once "class/config/class.admin.php";
+                        require_once 'class/config/class.lang.php';
                 ?>
                 <div class="row" >
                     

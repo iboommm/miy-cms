@@ -36,7 +36,7 @@
 	$lang["Admin-add-member"] = "เพิ่มสมาชิก";
 	$lang["Admin-edit-member"] = "แก้ไขสมาชิก";
 	$lang["Admin-webboard"] = "จัดการเว็บบอร์ด";
-	$lang["Admin-webboard-forum"] = "จัดการหมวดหมู่";
+	$lang["Admin-webboard-setting"] = "ตั้งค่าเว็บบอร์ด";
 	$lang["Admin-webboard-topic"] = "จัดการกระทู้";
 	$lang["Admin-success"] = "เสร็จสิ้น";
 	$lang["Admin-add-menu"] = "เพิ่มเมนู";
@@ -48,6 +48,21 @@
 	$lang["Admin-menu-description"] = "รายละเอียดเมนู";
 	$lang["Admin-menu-num"] = "ลำดับที่";
 	$lang["Admin-menu-sub"] = "เมนูรอง";
+	$lang["Admin-market"] = "จัดการร้านค้า";
+	$lang["Admin-market-setting"] = "จัดการร้านค้า";
+	$lang["Admin-group-item"] = "จัดการกลุ่มสินค้า";
+	$lang["Admin-add-item"] = "เพิ่มสินค้า";
+	$lang["Admin-edit-item"] = "แก้ไขสินค้า";
+	$lang["Admin-remove-item"] = "ลบสินค้า";
+	$lang["Admin-layout"] = "จัดการรูปแบบเว็บไซต์";
+	$lang["Admin-blog"] = "จัดการบทความ";
+	$lang["Admin-module"] = "จัดการส่วนแสดงผล";
+	$lang["Admin-add-module"] = "เพิ่มโมดูล";
+	$lang["Admin-edit-module"] = "แก้ไขโมดูล";
+	$lang["Admin-remove-module"] = "ลบโมดูล";
+	$lang["Admin-add-blog"] = "จัดการบทความ";
+	$lang["Admin-edit-blog"] = "จัดการบทความ";
+	$lang["Admin-remove-blog"] = "จัดการบทความ";
 
 	$lang["Admin-Help-TitleName"] = "กำหนดข้อความที่จะแสดงบน Title Bars หรือบนส่วนหัวของเว็บไซต์";
 	$lang["Admin-error-login"] = "ชื่อผู้ใช้ หรือ รหัสผ่าน ไม่ถูกต้อง";
@@ -60,6 +75,7 @@
 	$lang["Admin-help-success4"] = "เรียบร้อยแล้ว";
 	$lang["Admin-help-success5"] = "ลบสมาชิก ";
 	$lang["Admin-help-success6"] = "อัพเดตข้อมูลเรียบร้อย ";
+	$lang["Admin-help-success7"] = "ลบเมนู ";
 	/*--ADMIN-- */	
 	
 ?>

@@ -1,7 +1,7 @@
 <?php 
-	require_once "/class/config/class.template.php";
-	require_once "/class/config/class.setting.php";
-	require_once '/class/config/class.lang.php';
+	require_once "class/config/class.template.php";
+	require_once "class/config/class.setting.php";
+	require_once 'class/config/class.lang.php';
 
 	$getLang = getLang();
 	require 'lang/lang.'.$getLang.'.php';
@@ -46,16 +46,10 @@
 			var encodedPassword = btoa($('input#password').val());
 			var generateData = "" + encodedUsername + "," + encodedPassword + "";
 			$.post('login-check', {data: generateData}, function(data) {
-				if(data == "1") {	
 					$('#loading').css("display","block");
 					$('form[role=login]').css("display","none");
 					$('#panelLogin-Login-Fail').css("display","none");
 					location.reload();
-				}else {
-					$('#panelLogin-Login-Fail').css("display","block");
-					$('input#username').val("");
-					$('input#password').val("");
-				}
 			});
 		});
 	</script>
@@ -65,6 +59,7 @@
 	$login = new Template();
 	$login->setTitle($lang['Admin-Login']." - ".getSetting("title"));
 	$login->setKeyword("testKeyword");
+	$login->setScript("admin");
 	$login->setDescription("testDescription");
 	$login->setAuthor("testAuthor");
 	$login->setRender($render);

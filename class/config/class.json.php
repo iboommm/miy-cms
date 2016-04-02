@@ -6,6 +6,7 @@ define("CLASS_DB","OPEN_GATE");
 
 
 class JSONcompile {
+
 	function genJSON($table,$condition="") {
 		require 'class.db.php';  
 		$db = new DB();
@@ -13,7 +14,7 @@ class JSONcompile {
 		if($condition == "") {
 			$q="SELECT * FROM `miy_$table`";
 		}else {
-			$q="SELECT * FROM `miy_$table` Where $condition";
+			$q="SELECT * FROM `miy_$table` where $condition";
 		}
 		$result = $conn->query($q);
 		$fc = $result->field_count;
