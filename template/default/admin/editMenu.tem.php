@@ -2,10 +2,10 @@
                         exit("Access Denied"); 
                 ?>
                 <?php
-                        require_once "/class/config/class.template.php";
-                        require_once "/class/config/class.setting.php";
-                        require_once "/class/config/class.admin.php";
-                        require_once '/class/config/class.lang.php';
+                        require_once "class/config/class.template.php";
+                        require_once "class/config/class.setting.php";
+                        require_once "class/config/class.admin.php";
+                        require_once 'class/config/class.lang.php';
                 ?>
                 <div class="row" >
                     
@@ -62,10 +62,13 @@
                     function deleteUser(id) {
                         var genData = btoa(id);
 
-                        $.post('admin.php?mode=edit-member',{data: genData,sending: 'remove-member'}, function(data, textStatus, xhr) {
+                        $.post('admin.php?mode=edit-member',{data: genData,sending: 'remove-menu'}, function(data, textStatus, xhr) {
                             if(data == 1) {
-                                $('#status-delete').html("<div class=\"alert alert-success\"><strong><?php echo $lang["Admin-success"]; ?>!</strong> <?php echo $lang["Admin-help-success5"]; ?> <?php echo $lang["Admin-help-success4"]; ?></div>");
-                                location.href = "admin.php?mode=edit-member";
+                                $('#status-delete').html("<div class=\"alert alert-success\"><strong><?php echo $lang["Admin-success"]; ?>!</strong> <?php echo $lang["Admin-help-success7"]; ?> <?php echo $lang["Admin-help-success4"]; ?></div>");
+                                setTimeout(function() {
+                                    location.href = "admin.php?mode=menu";
+                                }, 1000);
+                                
                             }
                         });
                     }
@@ -81,7 +84,7 @@
                     <div class="modal-dialog modal-sm">
                         <div class="modal-content">
                             <div class="modal-body" id="status-delete">
-                                <h3><?php echo $lang["Admin-remove"]; ?> {{ myData[0].username }} ?</h3>
+                                <h3><?php echo $lang["Admin-remove"]; ?> {{ myData[0].name }} ?</h3>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo $lang["Admin-cancel"]; ?></button>
@@ -92,9 +95,10 @@
                 </div>
 
                     <div class="row">
-                    <div class="col-lg-6" id="add-member-form" >
+                    <div class="col-lg-6" id="edit-menu-s" >
 
                         <form role="form" ng-controller="customersCtrl">
+                            <input type="hidden" id="id" value="{{ myData[0].id }}">
                              <div class="form-group">
                                 <label><?php echo $lang["Admin-menu-name"]; ?></label>
                                 <input  id="addMenuName" class="form-control" placeholder="<?php echo $lang["Admin-Enter"]." ".$lang["Admin-menu-name"]; ?>" value="{{ myData[0].name }}" required>
@@ -110,21 +114,11 @@
 
                             <div class="form-group">
                                 <label><?php echo $lang["Admin-menu-num"]; ?></label>
-                                <input id="addMenuDescription" class="form-control" placeholder="<?php echo $lang["Admin-Enter"]." ".$lang["Admin-menu-num"];  ?>" value="{{ myData[0].num }}" required>
-                            </div>
-
-                            <div class="form-group" >
-                                <label><?php echo $lang["Admin-menu-sub"]; ?></label>
-                                <select  class="form-control" id="sub"  >
-                                    <option value="0" ng-if="myData[0].sub == 0" selected>-- Top ---</option>
-                                    <option value="0" ng-if="myData[0].sub != 0" >-- Top ---</option>
-                                    <option  ng-repeat="menu in allMenu | filter:{sub:0}" ng-if="myData[0].sub == menu.id" value="{{menu.id}}" selected>{{ menu.name }}</option>
-                                    <option  ng-repeat="menu in allMenu | filter:{sub:0}" ng-if="myData[0].sub != menu.id" value="{{menu.id}}" >{{ menu.name }}</option>
-                                </select>
+                                <input id="addMenuNum" class="form-control" placeholder="<?php echo $lang["Admin-Enter"]." ".$lang["Admin-menu-num"];  ?>" value="{{ myData[0].num }}" required>
                             </div>
 
                             <button id="confirm" type="button" class="btn btn-primary"><?php echo $lang["Admin-Update"]; ?></button>
-                            <button id="remove" data-href="/delete.php?id=54" data-toggle="modal" data-target="#confirm-delete" type="button" class="btn btn-danger"><?php echo $lang["Admin-remove"]; ?> {{ myData[0].username }} </button>
+                            <button id="remove" data-href="/delete.php?id=54" data-toggle="modal" data-target="#confirm-delete" type="button" class="btn btn-danger"><?php echo $lang["Admin-remove"]; ?> {{ myData[0].name }} </button>
                         </form>
 
                         </div>
@@ -143,7 +137,19 @@
                     });
 
                     $('#confirm').click(function(event) {
-                        
+                        var name = $('#addMenuName').val();
+                        var link = $('#addMenuLink').val();
+                        var description = $('#addMenuDescription').val();
+                        var sub = $('#addMenuSub').val();
+                        var num = $('#addMenuNum').val();
+                        var id = $('#id').val();
+
+                        var genData = name + "," + link + "," + description + "," + num + "," + sub + "," + id ;
+                        $.post('admin.php?mode=edit-menu', {data: genData , sending: "edit-menu"}, function(data, textStatus, xhr) {
+                            if(data == 1) {
+                                $('#edit-menu-s').append('<div class=\"alert alert-success\"><strong><?php echo $lang["Admin-success"]; ?>!</strong> <?php echo $lang["Admin-edit"]; ?> '+ name +' <?php echo $lang["Admin-help-success4"]; ?></div>');
+                            }
+                        });
                     });
 
                 </script>

@@ -1,8 +1,8 @@
 <?php 
-	require_once "/class/config/class.template.php";
-	require_once "/class/config/class.setting.php";
-    require_once "/class/config/class.admin.php";
-	require_once '/class/config/class.lang.php';
+	require_once "class/config/class.template.php";
+	require_once "class/config/class.setting.php";
+    require_once "class/config/class.admin.php";
+	require_once 'class/config/class.lang.php';
 
 	define("ADMIN_TEMPLATE","OPEN");
 	$getLang = getLang();
@@ -22,6 +22,72 @@
         exit();
     }else if(isset($_POST['data']) && isset($_POST['sending']) && $_POST['sending'] == "add-menu") {
         echo addMenu($_POST['data']);
+        exit();
+    }else if(isset($_POST['data']) && isset($_POST['sending']) && $_POST['sending'] == "edit-menu") {
+        echo editMenu($_POST['data']);
+        exit();
+    }else if(isset($_POST['data']) && isset($_POST['sending']) && $_POST['sending'] == "remove-menu") {
+        echo removeMenu($_POST['data']);
+        exit();
+    }else if(isset($_POST['data']) && isset($_POST['sending']) && $_POST['sending'] == "add-module") {
+        echo addModule($_POST['data']);
+        exit();
+    }else if(isset($_POST['data']) && isset($_POST['sending']) && $_POST['sending'] == "edit-module") {
+        echo editModule($_POST['data']);
+        exit();
+    }else if(isset($_POST['data']) && isset($_POST['sending']) && $_POST['sending'] == "remove-module") {
+        echo removeModule($_POST['data']);
+        exit();
+    }else if(isset($_POST['data']) && isset($_POST['sending']) && $_POST['sending'] == "add-article") {
+        echo addArticle($_POST['data']);
+        exit();
+    }else if(isset($_POST['data']) && isset($_POST['sending']) && $_POST['sending'] == "edit-article") {
+        echo editArticle($_POST['data']);
+        exit();
+    }else if(isset($_POST['data']) && isset($_POST['sending']) && $_POST['sending'] == "remove-article") {
+        echo removeArticle($_POST['data']);
+        exit();
+    }else if(isset($_POST['data']) && isset($_POST['sending']) && $_POST['sending'] == "board-setting") {
+        echo editBoard($_POST['data']);
+        exit();
+    }else if(isset($_POST['data']) && isset($_POST['sending']) && $_POST['sending'] == "add-group") {
+        echo addGroup($_POST['data']);
+        exit();
+    }else if(isset($_POST['data']) && isset($_POST['sending']) && $_POST['sending'] == "edit-group") {
+        echo editGroup($_POST['data']);
+        exit();
+    }else if(isset($_POST['data']) && isset($_POST['sending']) && $_POST['sending'] == "remove-group") {
+        echo removeGroup($_POST['data']);
+        exit();
+    }else if(isset($_POST['data']) && isset($_POST['sending']) && $_POST['sending'] == "add-item") {
+        echo addItem($_POST['data']);
+        exit();
+    }else if(isset($_POST['data']) && isset($_POST['sending']) && $_POST['sending'] == "edit-item") {
+        echo editItem($_POST['data']);
+        exit();
+    }else if(isset($_POST['data']) && isset($_POST['sending']) && $_POST['sending'] == "remove-item") {
+        echo removeItem($_POST['data']);
+        exit();
+    }else if(isset($_POST['data']) && isset($_POST['sending']) && $_POST['sending'] == "add-brand") {
+        echo addBrand($_POST['data']);
+        exit();
+    }else if(isset($_POST['data']) && isset($_POST['sending']) && $_POST['sending'] == "edit-brand") {
+        echo editBrand($_POST['data']);
+        exit();
+    }else if(isset($_POST['data']) && isset($_POST['sending']) && $_POST['sending'] == "remove-brand") {
+        echo removeBrand($_POST['data']);
+        exit();
+    }else if(isset($_POST['data']) && isset($_POST['sending']) && $_POST['sending'] == "add-ems") {
+        echo addEMS($_POST['data']);
+        exit();
+    }else if(isset($_POST['data']) && isset($_POST['sending']) && $_POST['sending'] == "remove-ems") {
+        echo removeEMS($_POST['data']);
+        exit();
+    }else if(isset($_POST['data']) && isset($_POST['sending']) && $_POST['sending'] == "layout") {
+        echo editLayout($_POST['data']);
+        exit();
+    }else if(isset($_POST['data']) && isset($_POST['sending']) && $_POST['sending'] == "update-mod") {
+        echo updateMod($_POST['data']);
         exit();
     }
 
@@ -43,99 +109,10 @@
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu message-dropdown">
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong><?php print $_SESSION["ses_login_user"]; ?> </strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong><?php print $_SESSION["ses_login_user"]; ?></strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong><?php print $_SESSION["ses_login_user"]; ?></strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-footer">
-                            <a href="#">Read All New Messages</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu alert-dropdown">
-                        <li>
-                            <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">View All</a>
-                        </li>
-                    </ul>
-                </li>
+                  
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php print $_SESSION["ses_login_user"]; ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>
                         <li>
                             <a href="admin.php?mode=logout"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
@@ -160,8 +137,48 @@
                             include "template/".getTheme()."/admin/addMember.tem.php";
                     }elseif ($_GET['mode'] == "edit-member") {
                             include "template/".getTheme()."/admin/editMember.tem.php";
+                    }elseif ($_GET['mode'] == "layout") {
+                            include "template/".getTheme()."/admin/layout.tem.php";
                     }elseif ($_GET['mode'] == "edit-menu") {
                             include "template/".getTheme()."/admin/editMenu.tem.php";
+                    }elseif ($_GET['mode'] == "add-module") {
+                            include "template/".getTheme()."/admin/addModule.tem.php";
+                    }elseif ($_GET['mode'] == "edit-module") {
+                            include "template/".getTheme()."/admin/editModule.tem.php";
+                    }elseif ($_GET['mode'] == "list-module") {
+                            include "template/".getTheme()."/admin/listModule.tem.php";
+                    }elseif ($_GET['mode'] == "add-article") {
+                            include "template/".getTheme()."/admin/addArticle.tem.php";
+                    }elseif ($_GET['mode'] == "edit-article") {
+                            include "template/".getTheme()."/admin/editArticle.tem.php";
+                    }elseif ($_GET['mode'] == "list-article") {
+                            include "template/".getTheme()."/admin/listArticle.tem.php";
+                    }elseif ($_GET['mode'] == "webboard-setting") {
+                            include "template/".getTheme()."/admin/webboard.tem.php";
+                    }elseif ($_GET['mode'] == "list-group") {
+                            include "template/".getTheme()."/admin/listGroup.tem.php";
+                    }elseif ($_GET['mode'] == "add-group") {
+                            include "template/".getTheme()."/admin/addGroup.tem.php";
+                    }elseif ($_GET['mode'] == "edit-group") {
+                            include "template/".getTheme()."/admin/editGroup.tem.php";
+                    }elseif ($_GET['mode'] == "add-item") {
+                            include "template/".getTheme()."/admin/addItem.tem.php";
+                    }elseif ($_GET['mode'] == "edit-item") {
+                            include "template/".getTheme()."/admin/editItem.tem.php";
+                    }elseif ($_GET['mode'] == "add-brand") {
+                            include "template/".getTheme()."/admin/addBrand.tem.php";
+                    }elseif ($_GET['mode'] == "edit-brand") {
+                            include "template/".getTheme()."/admin/editBrand.tem.php";
+                    }elseif ($_GET['mode'] == "list-brand") {
+                            include "template/".getTheme()."/admin/listBrand.tem.php";
+                    }elseif ($_GET['mode'] == "list-item") {
+                            include "template/".getTheme()."/admin/listItem.tem.php";
+                    }elseif ($_GET['mode'] == "add-ems") {
+                            include "template/".getTheme()."/admin/addEMS.tem.php";
+                    }elseif ($_GET['mode'] == "list-ems") {
+                            include "template/".getTheme()."/admin/listEMS.tem.php";
+                    }elseif ($_GET['mode'] == "mod-module") {
+                            include "template/".getTheme()."/admin/editMod.tem.php";
                     }elseif ($_GET['mode'] == "logout") {
                         session_destroy();
                         ?> 
@@ -191,6 +208,7 @@
 	$login->setKeyword("testKeyword");
 	$login->setDescription("testDescription");
 	$login->setAuthor("testAuthor");
+    $login->setScript("admin");
 	$login->setRender($render);
 	$login->setTheme(getTheme());
 	$login->renderPage();

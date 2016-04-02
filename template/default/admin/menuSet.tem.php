@@ -2,10 +2,10 @@
                         exit("Access Denied"); 
                 ?>
                 <?php  
-                    require_once "/class/config/class.template.php";
-                    require_once "/class/config/class.setting.php";
-                    require_once "/class/config/class.admin.php";
-                    require_once '/class/config/class.lang.php';
+                    require_once "class/config/class.template.php";
+                    require_once "class/config/class.setting.php";
+                    require_once "class/config/class.admin.php";
+                    require_once 'class/config/class.lang.php';
                 ?>
                 <script src='js/angular.min.js'></script>
                  <script>
@@ -50,19 +50,13 @@
                                     <div class="col-xs-2 hidden-xs">Description</div>
                                     <div class="col-xs-3 ">&nbsp;</div>
                                 </div>
-                                <div class="col-xs-12 container list-group " ng-repeat="menu in myData | orderBy:'num' | filter:{sub:0}" >
+                                <div class="col-xs-12 container list-group " ng-repeat="menu in myData | orderBy:'+num' " >
                                 <div class="col-xs-2 ">{{ menu.num }}</div>
                                 <div class="col-xs-2 ">{{ menu.name }}</div>
                                 <div class="col-xs-2 ">{{ menu.link }}</div>
                                 <div class="col-xs-2 hidden-xs">{{ menu.description }}</div>
                                 <div class="col-xs-3 "><a href="admin.php?mode=edit-menu&id={{ menu.id }}"><i class="fa fa-pencil-square-o"></i> <?php echo $lang["Admin-edit"]; ?></a>  </div>
-                                <div style="right:-13px;position: relative;" class="col-xs-12 container list-group " ng-repeat="menu in myData | orderBy:'num' | filter:{sub:menu.id}" >                <div ng-if="menu.num == 1"> <br /></div>
-                                <div class="col-xs-2 "> <li> {{ menu.num }}</div>
-                                <div class="col-xs-2 ">{{ menu.name }}</div>
-                                <div class="col-xs-2 ">{{ menu.link }}</div>
-                                <div class="col-xs-2 hidden-xs">{{ menu.description }}</div>
-                                <div class="col-xs-3 "><a href="admin.php?mode=edit-menu&id={{ menu.id }}"><i class="fa fa-pencil-square-o"></i> <?php echo $lang["Admin-edit"]; ?></a></div>
-                           </div>
+                                
                            </div>
                             </div>
                             <div class="col-xs-12 container list-group">

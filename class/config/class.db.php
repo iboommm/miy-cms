@@ -1,5 +1,7 @@
+
 <?php 
 	error_reporting(E_ALL & ~E_NOTICE);
+
 	if(!defined("CLASS_DB")) 
 		exit("Access Denied");
 	require_once 'class.key.php';
@@ -11,6 +13,7 @@
 			if ($conn->connect_error) {
 			    die('Could not connect: ' . mysqli_connect_errno());
 			}
+			$conn->set_charset("utf8");
 			return $conn;
 		}
 

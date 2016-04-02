@@ -3,7 +3,7 @@
                 ?>
 
                 <script src='js/angular.min.js'></script>
-                 <script>
+                <script>
                 var app = angular.module('myApp', []);
                 app.controller('customersCtrl', function($scope, $http) {
                   $http.get("genJSON/banner").then(function (response) {

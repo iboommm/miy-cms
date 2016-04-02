@@ -45,7 +45,23 @@
 			return $this->render;
 		}
 		function getScript() {
-			include "template/".getTheme()."/header_script.php";
+			$js["jquery"] = "js/jquery.min.js";
+			$js["bootstrap"] = "js/bootstrap.min.js";
+			$css["bootstrap"] = "css/bootstrap.min.css";
+			if($this->script == "admin") {
+				$css["admin"] = "template/Default/css/admin.css";
+				$css["admin2"] = "template/Default/css/sb-admin.css";
+			}else {
+				$css['index'] = "template/Default/css/modern-business.css";
+			}
+			$css["font"] = "template/Default/css/font-awesome.min.css";
+			foreach ($js as $jsGenerate) {
+				print "<script src='$jsGenerate'></script>\n";
+			}
+			foreach ($css as $cssGenerate) {
+				print "<link rel='stylesheet' href='$cssGenerate'></script>\n";
+			}
+			echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />";
 		}
 		function getTheme() {
 			return $this->theme;
